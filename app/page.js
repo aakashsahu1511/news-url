@@ -112,7 +112,7 @@ export default function Home() {
       {previousPredictions === undefined ? (
         <></>
       ) : (
-        <div>
+        <div className="flex flex-col items-center justify-center min-h-screen py-2">
           <h3 className="text-3xl items-center font-bold tracking-tight text-gray-900 sm:text-3xl py-2 px-10">
             Previous predictions
           </h3>
