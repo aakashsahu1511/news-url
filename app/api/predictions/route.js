@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Url from "@/models/urlModel";
 import { connect } from "@/dbConfig/dbConfig";
-
+export const revalidate = 0; // this is the new line added
 connect();
 
 export async function GET() {
