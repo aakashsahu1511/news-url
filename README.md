@@ -11,7 +11,7 @@ NewsLinkSummarizer summarizes news articles from links and categorizes them. It 
 
 Here is what you need to be able to run this project.
 
-- Node.js (Version: >=18.x)
+- Node.js
 - MongoDB
 - npm _(recommended)_
 ## Built With
@@ -32,7 +32,6 @@ Here is what you need to be able to run this project.
    git clone https://github.com/aakashsahu1511/news-url.git
    ```
 
-   > If you are on windows, run the following command on `gitbash` with admin privileges: <br> > `git clone -c core.symlinks=true  https://github.com/aakashsahu1511/news-url.git` <br>
 
 1. Go to the project folder
 
