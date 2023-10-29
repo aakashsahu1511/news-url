@@ -77,9 +77,9 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col min-h-screen bg-blue-100 justify-center">
       <label>
-        <h1 className="text-3xl align-text-top items-center font-bold tracking-tight text-gray-900 sm:text-5xl py-2 px-10">
+        <h1 className="text-3xl align-text-top items-center font-bold tracking-tight text-gray-900 sm:text-5xl py-6 px-10">
           Paste your news link and stay informed with a single click
         </h1>
       </label>
@@ -112,7 +112,7 @@ export default function Home() {
       {previousPredictions === undefined ? (
         <></>
       ) : (
-        <div className="flex flex-col items-center justify-center min-h-screen py-2">
+        <div className="py-2">
           <h3 className="text-3xl items-center font-bold tracking-tight text-gray-900 sm:text-3xl py-2 px-10">
             Previous predictions
           </h3>
