@@ -25,7 +25,7 @@ export default function Home() {
         200
       )}
         returned text must be pure json object example text = {"summary" : "summary" , "category" : "category"}`;
-      console.log(promptObj);
+      // console.log(promptObj);
       generate(promptObj);
     } catch (error) {
       console.log("Scrap failed", error.message);
@@ -35,7 +35,6 @@ export default function Home() {
   const generate = async (promptObj) => {
     console.log("generate called");
     try {
-      console.log("hello");
       const response = await axios.post("/api/generate", promptObj);
       console.log(
         "generate success",
@@ -50,7 +49,7 @@ export default function Home() {
         newsDate: date.getDate(),
       };
       setUrlDetails(urlObj);
-      console.log(urlObj);
+      // console.log(urlObj);
       saveUrl(urlObj);
     } catch (error) {
       console.log("generate failed", error.message);
@@ -60,7 +59,7 @@ export default function Home() {
   const saveUrl = async (urlObj) => {
     try {
       const response = await axios.post("/api/save-url", urlObj);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error) {
       console.log("save url failed", error.message);
     }
@@ -116,7 +115,7 @@ export default function Home() {
           <h3 className="text-3xl items-center font-bold tracking-tight text-gray-900 sm:text-3xl py-2 px-10">
             Previous predictions
           </h3>
-          {console.log(previousPredictions)}
+          {/* {console.log(previousPredictions)} */}
           {previousPredictions.map((prediction) => {
             return <Predictions key={prediction} {...prediction} />;
           })}
