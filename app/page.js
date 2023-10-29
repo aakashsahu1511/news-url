@@ -15,9 +15,11 @@ export default function Home() {
   };
   const [urlDetails, setUrlDetails] = useState();
   const [previousPredictions, setPreviousPredictions] = useState();
+  const [loading, setLoading] = useState(false);
 
   const ScrapNews = async () => {
     try {
+      setLoading(true);
       const response = await axios.post("/api/scrap", linkObj);
       promptObj.link = linkObj.link;
       promptObj.prompt = `Return the summary and the category of news ${response.data.message.substring(
@@ -29,6 +31,8 @@ export default function Home() {
       generate(promptObj);
     } catch (error) {
       console.log("Scrap failed", error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -67,11 +71,14 @@ export default function Home() {
 
   const GetPreviousPredictions = async () => {
     try {
+      setLoading(true);
       const response = await axios.get("/api/predictions");
       // console.log(response.data.data);
       setPreviousPredictions(response.data.data);
     } catch (error) {
       console.log("Get Predictions failed", error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -83,31 +90,47 @@ export default function Home() {
         </h1>
       </label>
       <input
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+        className="p-2 border border-gray-300 rounded-lg mx-4 mb-4 focus:outline-none focus:border-gray-600 text-black"
         id="newsLink"
         type="text"
         // value={user.username}
         onChange={(e) => setLinkObj({ ...linkObj, link: e.target.value })}
         placeholder="News Link"
       />
+      {/* <button
+        onClick={async () => {
+          await ScrapNews();
+        }}
+        className="p-2 border border-gray-300 rounded-lg mx-4 mb-4 focus:outline-none focus:border-gray-200 bg-blue-600 text-white"
+      >
+        Show news details
+      </button> */}
+
       <button
         onClick={async () => {
           await ScrapNews();
         }}
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-200 bg-blue-600 text-white"
+        className="p-2 border border-gray-300 rounded-lg mx-4 mb-4 focus:outline-none focus:border-gray-200 bg-blue-600 text-white"
       >
         Show news details
       </button>
+
       {urlDetails === undefined ? <></> : <UrlDetails {...urlDetails} />}
+
       <button
         onClick={async () => {
           await GetPreviousPredictions();
         }}
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-200 bg-blue-600 text-white"
+        className="p-2 border border-gray-300 rounded-lg mx-4 mb-4 focus:outline-none focus:border-gray-200 bg-blue-600 text-white"
       >
         Show previous predictions
       </button>
 
+      {loading ? (
+        <h1 class="text-center font-bold text-xl">Loading...</h1>
+      ) : (
+        <></>
+      )}
       {previousPredictions === undefined ? (
         <></>
       ) : (
