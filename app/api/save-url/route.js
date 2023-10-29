@@ -19,7 +19,7 @@ export async function POST(request) {
     });
 
     const savedUrl = await newUrl.save();
-    console.log(savedUrl);
+    // console.log(savedUrl);
 
     return NextResponse.json({
       message: "Url created successfully",

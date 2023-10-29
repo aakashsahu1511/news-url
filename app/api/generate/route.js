@@ -24,20 +24,20 @@ export const helper = async (prompt) => {
     method: "POST",
     body: JSON.stringify(payload),
   });
-  console.log("generate helper");
+  // console.log("generate helper");
   return response.json();
 };
 
 export async function POST(request) {
   try {
     const reqBody = await request.json();
-    console.log("line 34", reqBody.prompt);
+    // console.log("line 34", reqBody.prompt);
     const res = await helper(reqBody.prompt);
     const response = NextResponse.json({
       message: res,
       success: true,
     });
-    console.log("line 40 ", response);
+    // console.log("line 40 ", response);
 
     return response;
   } catch (error) {
